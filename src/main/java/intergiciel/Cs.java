@@ -1,5 +1,10 @@
 package intergiciel;
 
+/**
+ * 
+ * @author Stephane
+ *
+ */
 public class Cs {
 
 	public static void main(String[] args) {

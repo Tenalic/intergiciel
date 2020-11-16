@@ -2,6 +2,11 @@ package intergiciel.services;
 
 import java.util.Map;
 
+/**
+ * 
+ * @author Stephane
+ *
+ */
 public interface Commandes {
 
 	/**
