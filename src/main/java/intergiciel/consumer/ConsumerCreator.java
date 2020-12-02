@@ -1,3 +1,5 @@
+package intergiciel.consumer;
+
 
 import java.util.Collections;
 import java.util.Properties;

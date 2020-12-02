@@ -13,9 +13,9 @@ public interface IKafkaConstants {
 
 	public static String CLIENT_ID = "client1";
 
-	public static String TOPIC_NAME = "HT-topic";
+	public static String TOPIC_NAME = "tp-topic";
 
-	public static String GROUP_ID_CONFIG = "consumerGroup10";
+	public static String GROUP_ID_CONFIG = "tptopic";
 
 	public static Integer MAX_NO_MESSAGE_FOUND_COUNT = 100;
 
