@@ -1,6 +1,8 @@
 package intergiciel.services;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 
@@ -9,9 +11,10 @@ import java.util.Map;
  */
 public class CommandesImpl implements Commandes {
 
-	public Map<String, Long> getGlobalValues() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getGlobalValues() {
+		// sql
+		String response = "reponse";
+		return response;
 	}
 
 	public long getCountryValues(String v_pays) {

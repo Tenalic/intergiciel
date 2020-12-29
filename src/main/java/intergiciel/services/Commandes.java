@@ -12,7 +12,7 @@ public interface Commandes {
 	/**
 	 * retourne les valeurs globales clés Global du fichier json
 	 */
-	public Map<String, Long> getGlobalValues();
+	public String getGlobalValues();
 
 	/**
 	 * retourne les valeurs du pays demandé
