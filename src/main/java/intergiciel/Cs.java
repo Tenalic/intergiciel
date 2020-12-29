@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.Consumer;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -45,7 +46,7 @@ public class Cs {
 				Properties props = new Properties();
 
 				String value = "";
-				String key = "reponse";
+				String key = "response";
 
 				props.put("bootstrap.servers", "localhost:9092");
 				props.put("group.id", "test");
@@ -102,7 +103,8 @@ public class Cs {
 						while (true) {
 							ConsumerRecords<String, String> records = consumer.poll(100);
 							for (ConsumerRecord<String, String> record : records) {
-								System.out.println(record.value() + "---------------------------------------------");
+								System.out.println("---------------------------------------------" + record.value()
+										+ "---------------------------------------------");
 							}
 						}
 					} finally {
