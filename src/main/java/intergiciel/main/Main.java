@@ -11,7 +11,7 @@ public class Main {
 
 	static final String KEY = "request";
 
-	static final String TOPIC = "request";
+	static final String TOPIC = "topic2";
 
 	static public KafkaProducer<String, String> KafkaProducer2;
 
@@ -59,8 +59,6 @@ public class Main {
 			System.out.println(menu());
 
 			String value = sc.next();
-
-			System.out.println(value);
 
 			switch (value) {
 			case "Get_global_values":

@@ -6,7 +6,6 @@ import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.consumer.Consumer;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.producer.KafkaProducer;
@@ -47,6 +46,8 @@ public class Cs {
 
 				String value = "";
 				String key = "response";
+				String topicSend = "topic3";
+				String topicSub = "topic2";
 
 				props.put("bootstrap.servers", "localhost:9092");
 				props.put("group.id", "test");
@@ -54,7 +55,7 @@ public class Cs {
 				props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
 				try (Consumer<String, String> consumer = new KafkaConsumer<String, String>(props)) {
-					consumer.subscribe(Collections.singletonList("request"));
+					consumer.subscribe(Collections.singletonList(topicSub));
 					try {
 						while (true) {
 							ConsumerRecords<String, String> records = consumer.poll(100);
@@ -62,7 +63,7 @@ public class Cs {
 								switch (record.value()) {
 								case "Get_global_values":
 									value = commandes.getGlobalValues();
-									produceur(key, value, KafkaProducer3, key);
+									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								case "Get_confirmed_avg":
 									break;
@@ -98,7 +99,7 @@ public class Cs {
 				props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
 				try (Consumer<String, String> consumer = new KafkaConsumer<String, String>(props)) {
-					consumer.subscribe(Collections.singletonList("response"));
+					consumer.subscribe(Collections.singletonList("topic3"));
 					try {
 						while (true) {
 							ConsumerRecords<String, String> records = consumer.poll(100);
