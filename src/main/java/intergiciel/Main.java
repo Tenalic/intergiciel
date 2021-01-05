@@ -1,12 +1,17 @@
-package intergiciel.main;
+package intergiciel;
 
 import java.util.Properties;
 import java.util.Scanner;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import intergiciel.Cs;
+import intergiciel.consumer.ConsumerCustom1;
+import intergiciel.producer.un.ProducerCustom1;
+import intergiciel.services.Creator;
 
+@SpringBootApplication
 public class Main {
 
 	static final String KEY = "request";
@@ -40,15 +45,21 @@ public class Main {
 				+ "Exit (quitter le programme";
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
-		createProduceur();
+		SpringApplication.run(Main.class, args);
+		
+		// createProduceur();
 
-		Cs.createProduceur();
+		// Creator.createProduceur();
 
-		Cs.consumerUn(); // Consumer 2
+		ProducerCustom1.produceurRun();
 
-		Cs.consumerDeux(); // Consumer 3
+		// Creator.consumerUn(); // Consumer 2
+
+		// Creator.consumerDeux(); // Consumer 3
+
+		ConsumerCustom1.consumeurRun(); // Consumer 1
 
 		Scanner sc = new Scanner(System.in);
 
@@ -62,7 +73,7 @@ public class Main {
 
 			switch (value) {
 			case "Get_global_values":
-				Cs.produceur(KEY, value, KafkaProducer2, TOPIC);
+				Creator.produceur(KEY, value, KafkaProducer2, TOPIC);
 				break;
 			case "Get_confirmed_avg":
 				break;

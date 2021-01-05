@@ -1,4 +1,4 @@
-package intergiciel;
+package intergiciel.services;
 
 import intergiciel.services.CommandesImpl;
 
@@ -16,7 +16,7 @@ import org.apache.kafka.clients.producer.ProducerRecord;
  * @author Stephane
  *
  */
-public class Cs {
+public class Creator {
 
 	static CommandesImpl commandes = new CommandesImpl();
 
@@ -128,11 +128,6 @@ public class Cs {
 			e.printStackTrace();
 		}
 
-	}
-
-	public static void main(String[] args) {
-		// testProduceur();
-		// testConsumer();
 	}
 
 }
