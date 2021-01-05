@@ -2,6 +2,7 @@ package intergiciel.services;
 
 import intergiciel.services.CommandesImpl;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Properties;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
@@ -54,6 +55,8 @@ public class Creator {
 				props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 				props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
 
+				String[] array;
+
 				try (Consumer<String, String> consumer = new KafkaConsumer<String, String>(props)) {
 					consumer.subscribe(Collections.singletonList(topicSub));
 					try {
@@ -67,18 +70,23 @@ public class Creator {
 									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								case "Get_confirmed_avg":
-									value = commandes.getGlobalValues();
+									value = Long.toString(commandes.getConfirmedAvg());
 									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								case "Get_deaths_avg":
-									value = commandes.getGlobalValues();
+									value = Long.toString(commandes.getDeathsAvg());
 									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								case "Get_countries_deaths_percent":
-									value = commandes.getGlobalValues();
+									value = Float.toString(commandes.getCountriesDeathsPercent());
 									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								default:
+									array = record.value().split(" ");
+									if ("Get_country_values".equals(array[0])) {
+										value = Long.toString(commandes.getCountryValues(array[1]));
+										produceur(key, value, KafkaProducer3, topicSend);
+									}
 									break;
 								}
 							}

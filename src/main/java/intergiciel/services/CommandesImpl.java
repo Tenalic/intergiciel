@@ -8,7 +8,7 @@ package intergiciel.services;
 public class CommandesImpl implements Commandes {
 
 	public String getGlobalValues() {
-		// sql
+		// TODO Auto-generated method stub
 		String response = "reponse";
 		return response;
 	}
