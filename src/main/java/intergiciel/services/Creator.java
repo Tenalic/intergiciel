@@ -38,7 +38,7 @@ public class Creator {
 
 	}
 
-	public static void consumerUn() {
+	public static void consumerDeux() {
 
 		Thread t = new Thread() {
 			public void run() {
@@ -62,14 +62,21 @@ public class Creator {
 							for (ConsumerRecord<String, String> record : records) {
 								switch (record.value()) {
 								case "Get_global_values":
+									System.out.println("DEBUG: ");
 									value = commandes.getGlobalValues();
 									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								case "Get_confirmed_avg":
+									value = commandes.getGlobalValues();
+									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								case "Get_deaths_avg":
+									value = commandes.getGlobalValues();
+									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								case "Get_countries_deaths_percent":
+									value = commandes.getGlobalValues();
+									produceur(key, value, KafkaProducer3, topicSend);
 									break;
 								default:
 									break;
@@ -87,7 +94,7 @@ public class Creator {
 
 	}
 
-	public static void consumerDeux() {
+	public static void consumerTrois() {
 
 		Thread t = new Thread() {
 			public void run() {

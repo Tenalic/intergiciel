@@ -11,7 +11,7 @@ import intergiciel.consumer.ConsumerCustom1;
 import intergiciel.producer.un.ProducerCustom1;
 import intergiciel.services.Creator;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class Main {
 
 	static final String KEY = "request";
@@ -47,19 +47,19 @@ public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		SpringApplication.run(Main.class, args);
-		
-		// createProduceur();
+		// SpringApplication.run(Main.class, args);
 
-		// Creator.createProduceur();
+		createProduceur(); // produceur 2
 
-		ProducerCustom1.produceurRun();
+		Creator.createProduceur(); // produceur 3
 
-		// Creator.consumerUn(); // Consumer 2
+		// ProducerCustom1.produceurRun(); // produceur 1
 
-		// Creator.consumerDeux(); // Consumer 3
+		Creator.consumerDeux(); // Consumer 2
 
-		ConsumerCustom1.consumeurRun(); // Consumer 1
+		Creator.consumerTrois(); // Consumer 3
+
+		// ConsumerCustom1.consumeurRun(); // Consumer 1
 
 		Scanner sc = new Scanner(System.in);
 

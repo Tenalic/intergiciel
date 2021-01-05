@@ -16,10 +16,8 @@ public class SummaryServiceImpl implements SummaryService{
 	@Transactional
 	public Summary createSummary(Summary s)
 	{
-		System.out.println("g");
 		if (s != null)
 		{
-			System.out.println("g");
 			return summaryRepository.save(s);
 		}
 		return null;
